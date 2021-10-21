@@ -1,4 +1,4 @@
-import Banner from "./banner.component";
+import Banner from "./pages/home-page/banner.component";
 
 import "./App.css";
 
