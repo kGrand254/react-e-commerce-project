@@ -1,10 +1,16 @@
+import { withRouter } from "react-router-dom";
+
 import "./menu-item.styles.scss";
 
-function MenuItem({ bgImage, title }) {
+function MenuItem({ bgImage, title, linkUrl, history, match }) {
+  const menuRouteHandler = function () {
+    history.push(`${match.url}${linkUrl}`);
+  };
+
   return (
     <div className="col-lg-4 col-md-6 ">
       <div className="menu-card ">
-        <div className="menu-item">
+        <div className="menu-item" onClick={menuRouteHandler}>
           <div
             className="background-image"
             style={{
@@ -21,4 +27,4 @@ function MenuItem({ bgImage, title }) {
   );
 }
 
-export default MenuItem;
+export default withRouter(MenuItem);
