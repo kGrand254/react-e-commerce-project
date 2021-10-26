@@ -3,6 +3,7 @@ import { withRouter } from "react-router-dom";
 import "./menu-item.styles.scss";
 
 function MenuItem({ bgImage, title, linkUrl, history, match }) {
+  console.log(bgImage);
   const menuRouteHandler = function () {
     history.push(`${match.url}${linkUrl}`);
   };
