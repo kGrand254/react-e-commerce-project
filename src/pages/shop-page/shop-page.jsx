@@ -16,7 +16,6 @@ class ShopPage extends React.Component {
     const { collections } = this.state;
     return (
       <div className="container">
-        <h2 className="mb-4 font-weight-bold text-right">Collections</h2>
         {collections.map(({ id, title, routeName, items }) => {
           return (
             <ShopCollection
