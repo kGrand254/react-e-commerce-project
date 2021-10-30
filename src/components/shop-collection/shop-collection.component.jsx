@@ -6,7 +6,7 @@ function ShopCollection(props) {
   return (
     <div className="row flex-column shop-collection  m-auto">
       <h4 className="collection-title">{props.title}</h4>
-      <div className="row">
+      <div className="row mb-5">
         {props.items
           .filter((item, idx) => {
             return idx < 4;
