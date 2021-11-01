@@ -1,4 +1,4 @@
-.btn {
+.sign-in-btn {
   height: 35px;
   background-color: #000;
   color: #ffff;
@@ -7,9 +7,17 @@
   align-items: center;
   justify-content: center;
   margin: 30px 0;
-  transition: transform 0.5s;
+  transition: all 0.5s;
 }
-.btn:hover {
+.sign-in-btn:hover {
   color: #ddd;
-  transform: scale(0.98);
+}
+
+.sign-in-btn.google-sign-in {
+  background: #0892d0;
+  color: #fefefe;
+}
+
+.sign-in-btn.google-sign-in:hover {
+  background: #0abab5;
 }

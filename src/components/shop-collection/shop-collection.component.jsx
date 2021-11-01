@@ -5,7 +5,7 @@ function ShopCollection(props) {
   console.log(props.items);
   return (
     <div className="row flex-column shop-collection  m-auto">
-      <h4 className="collection-title">{props.title}</h4>
+      <h3 className="collection-title">{props.title}</h3>
       <div className="row mb-5">
         {props.items
           .filter((item, idx) => {

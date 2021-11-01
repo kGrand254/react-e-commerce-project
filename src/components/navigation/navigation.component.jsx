@@ -1,10 +1,17 @@
 import React from "react";
+
+import { auth } from "../../firebase/firebase.utils";
+
 import { Link } from "react-router-dom";
 import { ReactComponent as Logo } from "../../assets/crown.svg";
 
 import "../navigation/navigation.component.styles.scss";
 
-function Navigation() {
+const handleSignOut = function () {
+  auth.signOut();
+};
+
+function Navigation({ isLoggedIn }) {
   return (
     <div className="container header">
       <Link className="logo-container" to="/">
@@ -17,6 +24,16 @@ function Navigation() {
         <Link className="option" to="/shop">
           CONTACT
         </Link>
+
+        {isLoggedIn ? (
+          <div className="option sign-out" onClick={handleSignOut}>
+            SIGN OUT
+          </div>
+        ) : (
+          <Link className="option" to="/sign-in">
+            SIGN IN
+          </Link>
+        )}
       </div>
     </div>
   );
