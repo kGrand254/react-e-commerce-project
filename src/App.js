@@ -1,7 +1,7 @@
 import React from "react";
 import { Switch, Route } from "react-router-dom";
 
-import { auth } from "../src/firebase/firebase.utils";
+import { auth, addUserProfileDocument } from "../src/firebase/firebase.utils";
 
 import Banner from "./pages/home-page/banner.component";
 import "./App.css";
@@ -21,10 +21,26 @@ class App extends React.Component {
   unsubscribeFromAuth = null;
 
   componentDidMount() {
-    this.unsubscribeFromAuth = auth.onAuthStateChanged((user) => {
-      this.setState({ currentUser: user });
+    this.unsubscribeFromAuth = auth.onAuthStateChanged(async (user) => {
+      if (user) {
+        const userRef = await addUserProfileDocument(user);
 
-      console.log(user);
+        userRef.onSnapshot((snapshot) => {
+          this.setState(
+            {
+              currentUser: {
+                id: snapshot.id,
+                ...snapshot.data(),
+              },
+            },
+            () => {
+              console.log(this.state);
+            }
+          );
+        });
+      } else {
+        this.setState({ currentUser: null });
+      }
     });
   }
 
